@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Final Grade Predictor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #eef2f7;
+        padding: 30px;
+      }
+      .container {
+        background-color: white;
+        max-width: 600px;
+        margin: auto;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .result {
+        margin-top: 25px;
+        font-size: 18px;
+        text-align: center;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎓 Final Grade Predictor</h1>
+      <form method="POST">
+        <label for="sex">Sex:</label>
+        <select name="sex" required>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" required />
+
+        <label for="studytime">Study Time (1-4):</label>
+        <input
+          type="number"
+          name="studytime"
+          step="0.1"
+          min="1"
+          max="4"
+          required
+        />
+
+        <label for="failures">Past Class Failures:</label>
+        <input type="number" name="failures" min="0" required />
+
+        <label for="schoolsup">School Support:</label>
+        <select name="schoolsup" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="famsup">Family Support:</label>
+        <select name="famsup" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="absences">Absences:</label>
+        <input type="number" name="absences" min="0" required />
+
+        <label for="g1">Grade Period 1 (G1):</label>
+        <input type="number" name="g1" step="0.1" required />
+
+        <label for="g2">Grade Period 2 (G2):</label>
+        <input type="number" name="g2" step="0.1" required />
+
+        <input type="submit" value="Predict Final Grade" />
+      </form>
+
+      {% if prediction %}
+      <div class="result">
+        🎯 Predicted Final Grade (G3): <strong>{{ prediction }}</strong>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
